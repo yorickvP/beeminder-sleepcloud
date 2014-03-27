@@ -12,7 +12,7 @@ cd beeminder-sleepcloud
 npm install
 # edit 'auth' in config.json to point to your beeminder auth token
 # found at https://www.beeminder.com/api/v1/auth_token.json
-# set your bedtime and daystart in config.json (daystart is the time after which sleeps count towards the next day, only the earliest sleep on a day is looked at and taken as the time you go to bed
+# set your bedtime and daystart in config.json (daystart explained below)
 node report.js
 ```
 The first time, the script will open a webbrowser to authenticate with google to access your sleepcloud data (or, if this is not possible, spit out a link to go to).
