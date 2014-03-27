@@ -1,0 +1,8 @@
+{
+	"beeminder": {
+		"auth": "",
+		"goal": "sleep"
+	},
+	"bedtime": "1:00",
+	"daystart": "15:00"
+}
