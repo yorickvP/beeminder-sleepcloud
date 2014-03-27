@@ -1,7 +1,7 @@
 Beeminder-sleepcloud
 =======
 
-This is a node.js script, intended to run as a cronjob, to automatically submit data from [Sleep as Android](https://play.google.com/store/apps/details?id=com.urbandroid.sleep) (using the [SleepCloud addon](https://play.google.com/store/apps/details?id=com.urbandroid.sleep.addon.port) to beeminder (set up using a 'do less' goal, in order to limit the time spent awake after the 'bedtime', but you can easily adapt the code to mind sleep length or wake-up time).
+This is a node.js script, intended to run as a cronjob, to automatically submit data from [Sleep as Android](https://play.google.com/store/apps/details?id=com.urbandroid.sleep) (using the [SleepCloud addon](https://play.google.com/store/apps/details?id=com.urbandroid.sleep.addon.port) to [beeminder](https://www.beeminder.com/) (set up using a 'do less' goal, in order to limit the time spent awake after the 'bedtime', but you can easily adapt the code to mind sleep length or wake-up time).
 
 Installation
 =====
