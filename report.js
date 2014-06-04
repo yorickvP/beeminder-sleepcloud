@@ -5,9 +5,13 @@ var sleepcloud_fetch = require('./lib/sleepcloud.js')
 var Beeminder = require('./lib/beeminder.js')
 var config = require('./config.json')
 function get_sleeps(time, cb) {
-	make_userinfo_oauth(function(oauth2Client) {
-		sleepcloud_fetch(oauth2Client, {timestamp: +time}, cb)
-	})
+	if (config.sleepcloud && config.sleepcloud.user_token && config.sleepcloud.user_token.length > 30) {
+		sleepcloud_fetch.token(config.sleepcloud.user_token, {timestamp: +time}, cb)
+	} else {
+		make_userinfo_oauth(function(oauth2Client) {
+			sleepcloud_fetch.oauth(oauth2Client, {timestamp: +time}, cb)
+		})
+	}
 }
 
 function pad2(x) {
