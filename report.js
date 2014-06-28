@@ -94,7 +94,10 @@ b.get('users/me/goals/'+config.beeminder.goal, {datapoints:true}, function(err, 
 			}
 			// find the earliest sleep for one day, starting at 16:00 or so
 			var day_sleep = find_earliest_sleeps(response.sleeps, daystart)
-			var submit_data = day_sleep.map(function(day_sleep_data) {
+			var sorted_sleep = day_sleep.sort(function(a, b) {
+				return a.target_day - b.target_day
+			})
+			var submit_data = sorted_sleep.map(function(day_sleep_data) {
 				var target_day = day_sleep_data.target_day
 				var d = day_sleep_data.sleep
 
