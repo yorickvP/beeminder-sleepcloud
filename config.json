@@ -4,5 +4,8 @@
 		"goal": "sleep"
 	},
 	"bedtime": "22:00",
-	"daystart": "15:00"
+	"daystart": "15:00",
+	"sleepcloud": {
+		"user_token": ""
+	}
 }
