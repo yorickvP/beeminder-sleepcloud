@@ -107,7 +107,7 @@ function report({daystart, bedtime, beeminder, sleepcloud}) {
 			}
 		})
 		if (submit_data.length) {
-			b.postAsync('users/me/goals/'+beeminder.goal+'/datapoints/create_all',
+			b.post('users/me/goals/'+beeminder.goal+'/datapoints/create_all',
 				{datapoints: JSON.stringify(submit_data)}).then(() => console.log("data submitted"))
 		} else {
 			console.log('Nothing to submit')
