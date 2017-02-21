@@ -1,11 +1,11 @@
 {
   "name": "beeminder-sleepcloud",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "connect beeminder to sleepcloud",
   "main": "index.js",
   "dependencies": {
-    "googleapis": "~0.6.1",
-    "request": "^2.34.0"
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
   },
   "devDependencies": {},
   "scripts": {
