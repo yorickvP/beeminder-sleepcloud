@@ -32,7 +32,7 @@ function makehumantime(date) {
 }
 function comment(d) {
 	return `sleepcloud ${makehumantime(d.fromTime)} - ` +
-					  `${makehumantime(d.toTime)} ("${(d.lengthMinutes / 60).toFixed(2)})`
+					  `${makehumantime(d.toTime)} (${(d.lengthMinutes / 60).toFixed(2)})`
 }
 function parsehumantime(time) {
 	const time_split = time.split(':')
