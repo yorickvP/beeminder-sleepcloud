@@ -4,6 +4,7 @@
   "description": "connect beeminder to sleepcloud",
   "main": "index.js",
   "dependencies": {
+    "googleapis": "^18.0.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
   },
