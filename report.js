@@ -17,8 +17,8 @@ function read_config(file = './config.json') {
 	return config
 }
 
-function get_sleeps(oauth, time) {
-	return sleepcloud_fetch.oauth(oauth, {timestamp: +time})
+function get_sleeps(auth, time, use_token) {
+	return (use_token ? sleepcloud_fetch.token : sleepcloud_fetch.oauth)(auth, {timestamp: +time})
 }
 
 function pad2(x) {
@@ -81,12 +81,18 @@ function stayed_up(target_day, bedtime, daystart, fromTime) {
 
 function report({daystart, bedtime, beeminder, sleepcloud}) {
 	const b = new Beeminder(beeminder.auth)
-	return Promise.all([b.get('users/me/goals/'+beeminder.goal, {datapoints:true}), oauth()])
-	.then(([res, oauth]) => {
+	let authenticator = oauth
+	if (sleepcloud.user_token) {
+		authenticator = Promise.resolve(sleepcloud.user_token)
+	} else {
+		authenticator = oauth()
+	}
+	return Promise.all([b.get('users/me/goals/'+beeminder.goal, {datapoints:true}), authenticator])
+	.then(([res, auth]) => {
 		const last_point = new Date(res.datapoints[res.datapoints.length-1].timestamp*1e3)
 		last_point.setHours(...daystart)
 		console.log('getting data from', last_point)
-		return get_sleeps(oauth, last_point)
+		return get_sleeps(auth, last_point, !!sleepcloud.user_token)
 	}).then(({sleeps}) => {
 		// find the earliest sleep for one day, starting at 16:00 or so
 		const day_sleep = find_earliest_sleeps(sleeps, daystart)
