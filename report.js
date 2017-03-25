@@ -89,7 +89,7 @@ function report({daystart, bedtime, beeminder, sleepcloud}) {
 	}
 	return Promise.all([b.get('users/me/goals/'+beeminder.goal, {datapoints:true}), authenticator])
 	.then(([res, auth]) => {
-		const last_point = new Date(res.datapoints[res.datapoints.length-1].timestamp*1e3)
+		const last_point = new Date(Math.max(...res.datapoints.map(({timestamp}) => timestamp)) * 1e3);
 		last_point.setHours(...daystart)
 		console.log('getting data from', last_point)
 		return get_sleeps(auth, last_point, !!sleepcloud.user_token)
@@ -106,6 +106,7 @@ function report({daystart, bedtime, beeminder, sleepcloud}) {
 
 			return {
 				timestamp,
+				requestid: ''+timestamp,
 				value: stayed_up_length,
 				comment: comment(sleep)
 			}
