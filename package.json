@@ -4,11 +4,9 @@
   "description": "connect beeminder to sleepcloud",
   "main": "index.js",
   "dependencies": {
-    "googleapis": "^18.0.0",
-    "request": "^2.79.0",
-    "request-promise": "^4.1.1"
+    "google-auth-library": "^8.7.0",
+    "node-fetch": "^2.6.9"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
